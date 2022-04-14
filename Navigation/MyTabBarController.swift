@@ -8,22 +8,32 @@
 import UIKit
 
 class MyTabBarController: UITabBarController {
-
+    
+    let profileViewController = ProfileViewController()
+    let feedViewController = FeedViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .systemGray2
+        setupControllers()
+        
+    }
+    private func setupControllers() {
+        let profileNavigController = UINavigationController(rootViewController: profileViewController)
+        profileViewController.tabBarItem.title = "Profile"
+        profileViewController.tabBarItem.image = UIImage(systemName: "person")
+        profileViewController.navigationItem.title = "Профиль"
+        profileNavigController.navigationBar.backgroundColor = .systemMint
+        
+        let feedNavController = UINavigationController(rootViewController: feedViewController)
+        feedViewController.tabBarItem.title = "Feed"
+        feedViewController.tabBarItem.image = UIImage(systemName: "newspaper")
+        feedViewController.navigationItem.title = "Лента"
+        feedNavController.navigationBar.backgroundColor = .systemBrown
+        
+        
+        viewControllers = [feedNavController, profileNavigController]
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
