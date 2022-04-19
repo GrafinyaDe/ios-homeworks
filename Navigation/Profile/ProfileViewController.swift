@@ -41,13 +41,13 @@ class ProfileViewController: UIViewController {
         NSLayoutConstraint.activate([
             viewHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             viewHeader.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            viewHeader.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: 0),
+            viewHeader.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             viewHeader.heightAnchor.constraint(equalToConstant: 220)
         ])
         
         NSLayoutConstraint.activate([
             newButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            newButton.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            newButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             newButton.heightAnchor.constraint(equalToConstant: 40)
         ])
