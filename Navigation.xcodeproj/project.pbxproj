@@ -12,10 +12,11 @@
 		FA51C7A62806AF08007D50F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA51C7A42806AF08007D50F0 /* LaunchScreen.storyboard */; };
 		FA670C5A2806D2CB00BB6BC6 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA670C592806D2CB00BB6BC6 /* MyTabBarController.swift */; };
 		FA670C5C2806D3C700BB6BC6 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA670C5B2806D3C700BB6BC6 /* FeedViewController.swift */; };
-		FA670C5E2806D3DC00BB6BC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA670C5D2806D3DC00BB6BC6 /* ProfileViewController.swift */; };
 		FA670C6028071A7B00BB6BC6 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA670C5F28071A7B00BB6BC6 /* PostViewController.swift */; };
 		FA670C622807F5B300BB6BC6 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA670C612807F5B300BB6BC6 /* InfoViewController.swift */; };
 		FA670C6428080DE200BB6BC6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA670C6328080DE200BB6BC6 /* Post.swift */; };
+		FA913AFC280D7ACC00B48EE9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA913AFB280D7ACC00B48EE9 /* ProfileViewController.swift */; };
+		FA913AFE280D7ACF00B48EE9 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA913AFD280D7ACF00B48EE9 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +27,11 @@
 		FA51C7A72806AF08007D50F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA670C592806D2CB00BB6BC6 /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		FA670C5B2806D3C700BB6BC6 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		FA670C5D2806D3DC00BB6BC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FA670C5F28071A7B00BB6BC6 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		FA670C612807F5B300BB6BC6 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		FA670C6328080DE200BB6BC6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FA913AFB280D7ACC00B48EE9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		FA913AFD280D7ACF00B48EE9 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +64,9 @@
 		FA51C7982806AF02007D50F0 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				FA913AFF280D7AE500B48EE9 /* Profile */,
 				FA51C7992806AF02007D50F0 /* AppDelegate.swift */,
 				FA670C592806D2CB00BB6BC6 /* MyTabBarController.swift */,
-				FA670C5D2806D3DC00BB6BC6 /* ProfileViewController.swift */,
 				FA670C5B2806D3C700BB6BC6 /* FeedViewController.swift */,
 				FA670C5F28071A7B00BB6BC6 /* PostViewController.swift */,
 				FA670C612807F5B300BB6BC6 /* InfoViewController.swift */,
@@ -74,6 +76,15 @@
 				FA51C7A72806AF08007D50F0 /* Info.plist */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		FA913AFF280D7AE500B48EE9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FA913AFB280D7ACC00B48EE9 /* ProfileViewController.swift */,
+				FA913AFD280D7ACF00B48EE9 /* ProfileHeaderView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,12 +158,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA51C79A2806AF02007D50F0 /* AppDelegate.swift in Sources */,
-				FA670C5E2806D3DC00BB6BC6 /* ProfileViewController.swift in Sources */,
 				FA670C5C2806D3C700BB6BC6 /* FeedViewController.swift in Sources */,
 				FA670C5A2806D2CB00BB6BC6 /* MyTabBarController.swift in Sources */,
 				FA670C622807F5B300BB6BC6 /* InfoViewController.swift in Sources */,
+				FA913AFC280D7ACC00B48EE9 /* ProfileViewController.swift in Sources */,
 				FA670C6428080DE200BB6BC6 /* Post.swift in Sources */,
 				FA670C6028071A7B00BB6BC6 /* PostViewController.swift in Sources */,
+				FA913AFE280D7ACF00B48EE9 /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
