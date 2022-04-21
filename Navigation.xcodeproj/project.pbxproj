@@ -17,6 +17,8 @@
 		FA670C6428080DE200BB6BC6 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA670C6328080DE200BB6BC6 /* Post.swift */; };
 		FA913AFC280D7ACC00B48EE9 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA913AFB280D7ACC00B48EE9 /* ProfileViewController.swift */; };
 		FA913AFE280D7ACF00B48EE9 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA913AFD280D7ACF00B48EE9 /* ProfileHeaderView.swift */; };
+		FA913B08280F2E0300B48EE9 /* ColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA913B07280F2E0300B48EE9 /* ColorSet.swift */; };
+		FA913B0B280FC30F00B48EE9 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA913B0A280FC30F00B48EE9 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		FA670C6328080DE200BB6BC6 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		FA913AFB280D7ACC00B48EE9 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		FA913AFD280D7ACF00B48EE9 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		FA913B07280F2E0300B48EE9 /* ColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSet.swift; sourceTree = "<group>"; };
+		FA913B0A280FC30F00B48EE9 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 		FA51C7982806AF02007D50F0 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				FA913B09280F301400B48EE9 /* ColorSet */,
 				FA913AFF280D7AE500B48EE9 /* Profile */,
 				FA51C7992806AF02007D50F0 /* AppDelegate.swift */,
 				FA670C592806D2CB00BB6BC6 /* MyTabBarController.swift */,
@@ -83,8 +88,17 @@
 			children = (
 				FA913AFB280D7ACC00B48EE9 /* ProfileViewController.swift */,
 				FA913AFD280D7ACF00B48EE9 /* ProfileHeaderView.swift */,
+				FA913B0A280FC30F00B48EE9 /* LogInViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		FA913B09280F301400B48EE9 /* ColorSet */ = {
+			isa = PBXGroup;
+			children = (
+				FA913B07280F2E0300B48EE9 /* ColorSet.swift */,
+			);
+			path = ColorSet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,9 +175,11 @@
 				FA670C5C2806D3C700BB6BC6 /* FeedViewController.swift in Sources */,
 				FA670C5A2806D2CB00BB6BC6 /* MyTabBarController.swift in Sources */,
 				FA670C622807F5B300BB6BC6 /* InfoViewController.swift in Sources */,
+				FA913B08280F2E0300B48EE9 /* ColorSet.swift in Sources */,
 				FA913AFC280D7ACC00B48EE9 /* ProfileViewController.swift in Sources */,
 				FA670C6428080DE200BB6BC6 /* Post.swift in Sources */,
 				FA670C6028071A7B00BB6BC6 /* PostViewController.swift in Sources */,
+				FA913B0B280FC30F00B48EE9 /* LogInViewController.swift in Sources */,
 				FA913AFE280D7ACF00B48EE9 /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

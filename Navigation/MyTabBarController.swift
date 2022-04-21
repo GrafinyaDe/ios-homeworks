@@ -11,6 +11,7 @@ class MyTabBarController: UITabBarController {
     
     let profileViewController = ProfileViewController()
     let feedViewController = FeedViewController()
+    let logInViewController = LogInViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ class MyTabBarController: UITabBarController {
         
     }
     private func setupControllers() {
+        
         let profileNavigController = UINavigationController(rootViewController: profileViewController)
         profileViewController.tabBarItem.title = "Profile"
         profileViewController.tabBarItem.image = UIImage(systemName: "person")
@@ -31,8 +33,13 @@ class MyTabBarController: UITabBarController {
         feedViewController.navigationItem.title = "Лента"
         feedNavController.navigationBar.backgroundColor = .systemBrown
         
+        let logInViewController = UINavigationController(rootViewController: logInViewController)
+        logInViewController.tabBarItem.title = "Profile"
+        logInViewController.tabBarItem.image = UIImage(systemName: "person")
+        logInViewController.navigationBar.isHidden = true
         
-        viewControllers = [feedNavController, profileNavigController]
+        
+        viewControllers = [feedNavController, logInViewController]
     }
     
 }
