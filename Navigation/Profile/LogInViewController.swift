@@ -78,8 +78,6 @@ class LogInViewController: UIViewController {
         button.setTitle("Log in", for: .normal)
         button.layer.cornerRadius = 10
         button.clipsToBounds = true
-//                button.backgroundColor = UIColor(rgb: 0x4787cd, alpha: 1)
-        //        button.backgroundColor = UIColor(rgb: 0x4787cd, alpha: 0.8)
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         button.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
         return button
