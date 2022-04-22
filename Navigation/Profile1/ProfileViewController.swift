@@ -13,14 +13,48 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-        
-    }
-    override func viewWillLayoutSubviews() {
-        let header = ProfileHeaderView()
-        view.addSubview(header)
-        header.frame = view.frame
-        header.addView()
-        
+        layout()
+        viewHeader.loadView()
+
     }
     
+    private let viewHeader: ProfileHeaderView = {
+        let view = ProfileHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private var newButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .systemBlue
+        button.setTitle("New button", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+//        button.layer.cornerRadius = 15
+        return button
+    }()
+    
+    private func layout() {
+        [viewHeader, newButton].forEach { view.addSubview($0) }
+//        view.addSubview(viewHeader)
+        
+        NSLayoutConstraint.activate([
+            viewHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            viewHeader.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            viewHeader.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            viewHeader.heightAnchor.constraint(equalToConstant: 220)
+        ])
+        
+        NSLayoutConstraint.activate([
+            newButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            newButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            newButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            newButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+   
+    
 }
+
+
+
