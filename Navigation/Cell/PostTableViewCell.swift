@@ -62,6 +62,7 @@ class PostTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     func setupCell(_ post: Post) {
         autorPostLabel.text = post.autor
         imagePostView.image = post.image
@@ -117,5 +118,4 @@ class PostTableViewCell: UITableViewCell {
             stackLikeViews.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
         ])
     }
-    
 }
