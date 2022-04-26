@@ -22,7 +22,9 @@ class PhotosPreviewCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-     func setupSell(_ photos: Photos) {
+    
+    
+    func setupSell(_ photos: Photos) {
         photo.image = photos.image
     }
     private func layout() {

@@ -27,6 +27,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        
     }
     
     private func layout() {
@@ -62,7 +63,7 @@ extension ProfileViewController: UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.identifire, for: indexPath) as! PhotosTableViewCell
-            cell.delegate = self
+            cell.layoutSubviews()
             return cell
         } else  {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifire, for: indexPath) as! PostTableViewCell
@@ -70,23 +71,21 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         }
     }
+    
+
 }
 
 // MARK: UITableViewDelegate
 
 extension ProfileViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
-            return 160 // Автоматическая высота первой секции не устанавливается, возможно из-за коллекции в ячейке, разобраться не смогла
-            
-        } else {
-            
-            let height = CGFloat(UITableView.automaticDimension)
-            return height
-        }
+        
+        UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        44
+        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -97,28 +96,26 @@ extension ProfileViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
-            return 220 // Автоматическую высоту так же не получилось задать
+            
+            return UITableView.automaticDimension
+            
         } else {
             return 0
         }
     }
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        44
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         if indexPath.section == 0 {
-            
             self.navigationController?.pushViewController(PhotosViewController(), animated: true)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-// MARK: PhotosTableViewCellDelegate
-
-extension ProfileViewController: PhotosTableViewCellDelegate {
-    func pressedButton() {
-        let gallery = PhotosViewController()
-        navigationController?.pushViewController(gallery, animated: true)
-    }
-    
+  
     
 }
+
 
 

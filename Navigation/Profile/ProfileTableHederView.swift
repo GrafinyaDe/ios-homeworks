@@ -116,23 +116,23 @@ class ProfileHeaderView: UIView {
         ])
         
         NSLayoutConstraint.activate([
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant:  16),
             statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 120),
-            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -70),
             statusLabel.trailingAnchor.constraint(equalTo:  trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16),
             statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 120),
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 15),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            statusTextField.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -16)
+            statusTextField.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -16),
+            statusTextField.heightAnchor.constraint(equalToConstant: 40)
         ])
         
         NSLayoutConstraint.activate([
-            
-            setStatusButton.bottomAnchor.constraint(equalTo:  bottomAnchor, constant: -16),
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.leadingAnchor.constraint(equalTo:  leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -16),
+            setStatusButton.bottomAnchor.constraint(equalTo:  bottomAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }

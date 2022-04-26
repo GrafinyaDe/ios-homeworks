@@ -16,16 +16,15 @@ class PhotosTableViewCell: UITableViewCell {
     private var photo = Photos.makePhotoForGallary()
 
     private lazy var photosLabel: UILabel = {
-        $0.frame = self.bounds
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.textColor = .black
         $0.font = .boldSystemFont(ofSize: 24)
         $0.text = "Photos"
+        
         return $0
     }(UILabel())
 
     private lazy var button: UIButton = {
-        $0.frame = self.bounds
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.setImage(UIImage(systemName: "arrow.right"), for: .normal)
         $0.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
@@ -42,21 +41,26 @@ class PhotosTableViewCell: UITableViewCell {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(PhotosPreviewCollectionViewCell.self, forCellWithReuseIdentifier: PhotosPreviewCollectionViewCell.identifire)
+        
         return collectionView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
+        
         layout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     private let inset: CGFloat = 12
+    private let insetColl: CGFloat = 8
     
     private func layout() {
         
@@ -64,7 +68,7 @@ class PhotosTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             photosLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  inset),
-            photosLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset)
+            photosLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
         ])
 
         NSLayoutConstraint.activate([
@@ -73,11 +77,14 @@ class PhotosTableViewCell: UITableViewCell {
         ])
 
         NSLayoutConstraint.activate([
+            
             photosCollectView.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: inset),
             photosCollectView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
             photosCollectView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            photosCollectView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset)
+            photosCollectView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset),
+            photosCollectView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - insetColl * 3) / 4)
         ])
+        
     }
 }
 
@@ -100,23 +107,26 @@ extension PhotosTableViewCell: UICollectionViewDataSource {
 
 extension PhotosTableViewCell: UICollectionViewDelegateFlowLayout {
     
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - 8 * 3) / 4
-        return CGSize(width: width, height: width)
+        let wight = (UIScreen.main.bounds.width - inset * 2 - insetColl * 3) / 4
+        return CGSize(width: wight, height: wight)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        8
+        insetColl
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        8
+        insetColl
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        UIEdgeInsets.zero //(top: 12, left: 12, bottom: 12, right: 12)
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.pressedButton()
     }
     
 }
+
