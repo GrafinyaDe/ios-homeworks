@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-    
+        
     private let avatarImageView: UIImageView = {
         let avatar = UIImageView()
         avatar.translatesAutoresizingMaskIntoConstraints = false
@@ -89,22 +89,101 @@ class ProfileHeaderView: UIView {
         super .init(frame: frame)
         layout()
         backgroundColor = .white
-        
+        setGesture()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private var backView: UIView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.frame = UIScreen.main.bounds
+        $0.backgroundColor = .gray
+        $0.alpha = 0.0
+        return $0
+    }(UIView())
+    
+    private var button: UIButton = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.backgroundColor = .white
+        $0.setImage(UIImage(systemName: "xmark"), for: .normal)
+        $0.alpha = 0.0
+        $0.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
+        return $0
+    }(UIButton())
+    
+    @objc private func cancelAction() {
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut) { [self] in
+            button.alpha = 0.0
+        } completion: { _ in
+            UIView.animate(withDuration: 0.5) { [self] in
+                
+                backView.alpha = 0.0
+                avatarImageView.layer.cornerRadius = 50
+                avatarX.constant = 66
+                avatarY.constant = 66
+                avatarWight.constant = 100
+                avatarHeight.constant = 100
+                
+                layoutIfNeeded()
+            }
+        }
+    }
+    
+    private func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tapGesture)
+        addSubview(backView)
+    }
+    
+    @objc private func tapAction() {
+        
+        addSubview(button)
+        bringSubviewToFront(avatarImageView)
+        
+        NSLayoutConstraint.activate([
+            button.trailingAnchor.constraint(equalTo: trailingAnchor),
+            button.topAnchor.constraint(equalTo: topAnchor)
+        ])
+        
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut) { [self] in
+            
+            backView.alpha = 0.7
+            avatarImageView.layer.cornerRadius = 0
+            avatarX.constant = UIScreen.main.bounds.width / 2
+            avatarY.constant = UIScreen.main.bounds.height / 2
+            avatarWight.constant = UIScreen.main.bounds.width
+            avatarHeight.constant = UIScreen.main.bounds.width
+            layoutIfNeeded()
+            
+        } completion: { _ in
+            UIView.animate(withDuration: 0.3) { [self] in
+                button.alpha = 1.0
+            }
+        }
+    }
+    
+    private var avatarWight = NSLayoutConstraint()
+    private var avatarHeight = NSLayoutConstraint()
+    private var avatarX = NSLayoutConstraint()
+    private var avatarY = NSLayoutConstraint()
+    
     private func layout() {
         
         [avatarImageView, fullNameLabel, statusLabel, statusTextField, setStatusButton].forEach { addSubview($0) }
         
+        avatarX = avatarImageView.centerXAnchor.constraint(equalTo: leadingAnchor, constant: 66)
+        avatarY = avatarImageView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 66)
+        avatarWight = avatarImageView.widthAnchor.constraint(equalToConstant: 100)
+        avatarHeight = avatarImageView.heightAnchor.constraint(equalToConstant: 100)
+        
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo:  topAnchor, constant: 16),
-            avatarImageView.leadingAnchor.constraint(equalTo:  leadingAnchor, constant: 16),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 100)
+            avatarX,
+            avatarY,
+            avatarWight,
+            avatarHeight
         ])
         
         NSLayoutConstraint.activate([
@@ -112,7 +191,6 @@ class ProfileHeaderView: UIView {
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 120),
             fullNameLabel.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: 0),
             fullNameLabel.heightAnchor.constraint(equalToConstant: 30)
-            
         ])
         
         NSLayoutConstraint.activate([
