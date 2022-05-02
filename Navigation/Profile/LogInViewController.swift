@@ -15,6 +15,7 @@ class LogInViewController: UIViewController {
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .white
         return scrollView
     }()
     
@@ -90,7 +91,9 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         layout()
+        closeKbd()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,19 +120,27 @@ class LogInViewController: UIViewController {
         scrollView.verticalScrollIndicatorInsets = .zero
     }
     
+    private func closeKbd() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKbd))
+        view.addGestureRecognizer(tapGesture)
+    }
+    @objc private func hideKbd() {
+        view.endEditing(true)
+    }
+    
     private func layout() {
         
         view.addSubview(scrollView)
         
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
         
         scrollView.addSubview(contentView)
-        
+
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -177,7 +188,7 @@ class LogInViewController: UIViewController {
             buttonLogIn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             buttonLogIn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             buttonLogIn.heightAnchor.constraint(equalToConstant: 50),
-            buttonLogIn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            buttonLogIn.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant:  -16)
         ])
         
     }
@@ -187,9 +198,6 @@ class LogInViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 
 extension LogInViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return true
-    }
+
 }
 
