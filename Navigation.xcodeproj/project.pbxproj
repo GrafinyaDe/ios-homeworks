@@ -77,7 +77,6 @@
 		FA51C78D2806AF02007D50F0 = {
 			isa = PBXGroup;
 			children = (
-				FA3318AE28147D6C00FBD258 /* UIView+Extencion.swift */,
 				FA51C7982806AF02007D50F0 /* Navigation */,
 				FA51C7972806AF02007D50F0 /* Products */,
 			);
@@ -94,6 +93,7 @@
 		FA51C7982806AF02007D50F0 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				FA3318AE28147D6C00FBD258 /* UIView+Extencion.swift */,
 				FA3318B2281548DE00FBD258 /* Cell */,
 				FA913B09280F301400B48EE9 /* ColorSet */,
 				FA913AFF280D7AE500B48EE9 /* Profile */,

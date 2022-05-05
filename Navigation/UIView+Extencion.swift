@@ -6,7 +6,9 @@
 //
 
 import UIKit
+
 extension UIView {
+    
     static var identifire: String {
         String(describing: self)
     }
