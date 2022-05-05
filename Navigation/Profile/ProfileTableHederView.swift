@@ -90,6 +90,17 @@ class ProfileHeaderView: UIView {
         layout()
         backgroundColor = .white
         setGesture()
+        kbdClose()
+    }
+    
+    
+    private func kbdClose() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(kbdHide))
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func kbdHide() {
+        endEditing(true)
     }
     
     required init?(coder: NSCoder) {
