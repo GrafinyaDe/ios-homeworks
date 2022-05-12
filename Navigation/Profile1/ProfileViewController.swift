@@ -26,8 +26,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         layout()
-        
     }
     
     private func layout() {
@@ -71,8 +71,6 @@ extension ProfileViewController: UITableViewDataSource {
             return cell
         }
     }
-    
-
 }
 
 // MARK: UITableViewDelegate
@@ -113,9 +111,4 @@ extension ProfileViewController: UITableViewDelegate {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
-  
-    
 }
-
-
-
