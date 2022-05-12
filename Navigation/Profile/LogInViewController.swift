@@ -51,7 +51,8 @@ class LogInViewController: UIViewController {
         $0.layer.borderWidth = 0.5
         $0.autocapitalizationType = .none
         $0.delegate = self
-        $0.placeholder = "Email or Phone"
+        $0.placeholder = "Enter your email"
+//        $0.addTarget(self, action: #selector(textFieldDidEndEditing), for: .editingDidEnd)
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         $0.leftViewMode = .always
         return $0
@@ -66,7 +67,7 @@ class LogInViewController: UIViewController {
         $0.layer.borderWidth = 0.5
         $0.autocapitalizationType = .none
         $0.delegate = self
-        $0.placeholder = "Password"
+        $0.placeholder = "Enter your password"
         $0.isSecureTextEntry = true
         $0.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         $0.leftViewMode = .always
@@ -81,12 +82,57 @@ class LogInViewController: UIViewController {
         button.clipsToBounds = true
         button.setBackgroundImage(UIImage(named: "blue_pixel"), for: .normal)
         button.addTarget(self, action: #selector(tapAction), for: .touchUpInside)
+//        button.isEnabled = false
         return button
     }()
     
+    private let errorText: UILabel = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.textColor = .red
+        $0.font = UIFont.systemFont(ofSize: 12)
+        $0.text = "khjghgdsfhgkfdghl"
+        $0.isUserInteractionEnabled = false
+        return $0
+    }(UILabel())
+    
     @objc private func tapAction() {
+        
+        if textFieldName.text!.isEmpty {
+            UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse, .curveEaseInOut]) { [self] in
+                textFieldName.backgroundColor = .systemGray5
+            } completion: { [self] _ in
+                textFieldName.backgroundColor = .systemGray6
+            }
+        } else if textFieldPassword.text!.isEmpty {
+            UIView.animate(withDuration: 1, delay: 0, options: [.autoreverse, .curveEaseInOut]) { [self] in
+                textFieldPassword.backgroundColor = .systemGray5
+            } completion: { [self] _ in
+                textFieldPassword.backgroundColor = .systemGray6
+            }
+        } else if textFieldPassword.text!.count < 6 {
+                errorText.text = "Short password"
+        } else if textFieldName.text != "test@gmail.com"  {
+            let alert = UIAlertController(title: "Incorrect email or password", message: "Please try again", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Try again", style: .default) { [self] _ in
+                textFieldName.text!.removeAll()
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true)
+
+        } else if textFieldPassword.text != "qwerty"  {
+            let alert = UIAlertController(title: "Incorrect email or password", message: "Please try again", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Try again", style: .default) { [self] _ in
+                textFieldPassword.text!.removeAll()
+            }
+            alert.addAction(okAction)
+            present(alert, animated: true)
+
+        } else {
+
         let profile = ProfileViewController()
         navigationController?.pushViewController(profile, animated: true)
+
+        }
     }
     
     override func viewDidLoad() {
@@ -128,6 +174,8 @@ class LogInViewController: UIViewController {
         view.endEditing(true)
     }
     
+    
+    
     private func layout() {
         
         view.addSubview(scrollView)
@@ -167,7 +215,7 @@ class LogInViewController: UIViewController {
             
         ])
         
-        [imageLogo, textContent, buttonLogIn].forEach { contentView.addSubview($0) }
+        [imageLogo, textContent, errorText, buttonLogIn].forEach { contentView.addSubview($0) }
         
         NSLayoutConstraint.activate([
             imageLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
@@ -184,7 +232,12 @@ class LogInViewController: UIViewController {
         ])
         
         NSLayoutConstraint.activate([
-            buttonLogIn.topAnchor.constraint(equalTo: textFieldPassword.bottomAnchor, constant: 16),
+            errorText.topAnchor.constraint(equalTo: textContent.bottomAnchor, constant: 8),
+            errorText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            errorText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16)
+        ])
+        NSLayoutConstraint.activate([
+            buttonLogIn.topAnchor.constraint(equalTo: errorText.bottomAnchor, constant: 16),
             buttonLogIn.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             buttonLogIn.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             buttonLogIn.heightAnchor.constraint(equalToConstant: 50),
@@ -198,6 +251,46 @@ class LogInViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 
 extension LogInViewController: UITextFieldDelegate {
+    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        let allowedCharacters = CharacterSet(charactersIn:"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}").inverted
+//
+//        if textField == textFieldName {
+//            if textField.text!.isEmpty {
+//                textFieldName.layer.borderColor = UIColor.red.cgColor
+//                errorText.text = "Field is empty"
+//
+//            } else if textField.text!.count < 3 {
+//                textFieldName.layer.borderColor = UIColor.red.cgColor
+//                errorText.text = "Short adress"
+//
+//            } else if (textFieldName.text!.rangeOfCharacter(from: allowedCharacters) != nil) {
+//                textFieldName.layer.borderColor = UIColor.lightGray.cgColor
+//                errorText.text = "Succes"
+//            }
+//
+//        } else if textField == textFieldPassword {
+//            if textField.text!.isEmpty {
+//                textFieldPassword.layer.borderColor = UIColor.red.cgColor
+//                errorText.text = "Field is empty"
+//            } else if textField.text!.count < 3 {
+//                textFieldPassword.layer.borderColor = UIColor.red.cgColor
+//                errorText.text = "Short password"
+//
+//            } else if (textFieldPassword.text!.rangeOfCharacter(from: allowedCharacters) != nil) {
+//                textFieldPassword.layer.borderColor = UIColor.lightGray.cgColor
+//                errorText.text = "Succes"
+//                buttonLogIn.isEnabled = true
+//            }
+//        }
+//
+//    }
+    }
 
-}
 
+//let allowedCharacters = CharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz").inverted
+//
+//func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//
+//
+//}
