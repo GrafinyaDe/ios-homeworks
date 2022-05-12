@@ -40,11 +40,9 @@ class FeedViewController: UIViewController {
     
     @objc private func tapButton() {
         let postViewController = PostViewController()
-        postViewController.title = post.title
         navigationController?.pushViewController(postViewController, animated: true)
     }
     
-    var post = Post(title: "Новости")
     
     override func viewDidLoad() {
         super.viewDidLoad()
