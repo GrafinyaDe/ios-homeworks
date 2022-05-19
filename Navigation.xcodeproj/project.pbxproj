@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA180C6428328FB800E7DED3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA180C6328328FB800E7DED3 /* DetailViewController.swift */; };
 		FA3318AD28147AE800FBD258 /* PhotosPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3318AC28147AE800FBD258 /* PhotosPreviewCollectionViewCell.swift */; };
 		FA3318AF28147D6C00FBD258 /* UIView+Extencion.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3318AE28147D6C00FBD258 /* UIView+Extencion.swift */; };
 		FA3318B12815300900FBD258 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3318B02815300900FBD258 /* GalleryCollectionViewCell.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA180C6328328FB800E7DED3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		FA3318AC28147AE800FBD258 /* PhotosPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA3318AE28147D6C00FBD258 /* UIView+Extencion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extencion.swift"; sourceTree = "<group>"; };
 		FA3318B02815300900FBD258 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -94,13 +96,11 @@
 			isa = PBXGroup;
 			children = (
 				FA3318AE28147D6C00FBD258 /* UIView+Extencion.swift */,
+				FA51C7992806AF02007D50F0 /* AppDelegate.swift */,
 				FA3318B2281548DE00FBD258 /* Cell */,
 				FA913B09280F301400B48EE9 /* ColorSet */,
 				FA913AFF280D7AE500B48EE9 /* Profile */,
-				FA51C7992806AF02007D50F0 /* AppDelegate.swift */,
-				FA670C592806D2CB00BB6BC6 /* MyTabBarController.swift */,
 				FA670C5B2806D3C700BB6BC6 /* FeedViewController.swift */,
-				FA8D91E82812FA4300B3DDCD /* PhotosViewController.swift */,
 				FA670C5F28071A7B00BB6BC6 /* PostViewController.swift */,
 				FA670C612807F5B300BB6BC6 /* InfoViewController.swift */,
 				FA8D91EA2814531F00B3DDCD /* Photos.swift */,
@@ -115,9 +115,12 @@
 		FA913AFF280D7AE500B48EE9 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				FA670C592806D2CB00BB6BC6 /* MyTabBarController.swift */,
 				FA913AFB280D7ACC00B48EE9 /* ProfileViewController.swift */,
 				FA913AFD280D7ACF00B48EE9 /* ProfileTableHederView.swift */,
 				FA913B0A280FC30F00B48EE9 /* LogInViewController.swift */,
+				FA180C6328328FB800E7DED3 /* DetailViewController.swift */,
+				FA8D91E82812FA4300B3DDCD /* PhotosViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				FA8D91EB2814531F00B3DDCD /* Photos.swift in Sources */,
 				FA670C5A2806D2CB00BB6BC6 /* MyTabBarController.swift in Sources */,
 				FA670C622807F5B300BB6BC6 /* InfoViewController.swift in Sources */,
+				FA180C6428328FB800E7DED3 /* DetailViewController.swift in Sources */,
 				FA913B08280F2E0300B48EE9 /* ColorSet.swift in Sources */,
 				FA913AFC280D7ACC00B48EE9 /* ProfileViewController.swift in Sources */,
 				FA670C6428080DE200BB6BC6 /* Post.swift in Sources */,

@@ -69,14 +69,9 @@ class PhotosTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             photosLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant:  inset),
             photosLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-        ])
-
-        NSLayoutConstraint.activate([
+      
             button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-            button.centerYAnchor.constraint(equalTo: photosLabel.centerYAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
+            button.centerYAnchor.constraint(equalTo: photosLabel.centerYAnchor),
             
             photosCollectView.topAnchor.constraint(equalTo: photosLabel.bottomAnchor, constant: inset),
             photosCollectView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),

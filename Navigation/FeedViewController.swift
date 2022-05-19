@@ -59,15 +59,9 @@ class FeedViewController: UIViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-        ])
-        
-        NSLayoutConstraint.activate([
             buttonOne.heightAnchor.constraint(equalToConstant: 25),
-            buttonOne.widthAnchor.constraint(equalToConstant: 100)
-            
-        ])
+            buttonOne.widthAnchor.constraint(equalToConstant: 100),
         
-        NSLayoutConstraint.activate([
             buttonTwo.heightAnchor.constraint(equalToConstant: 25),
             buttonTwo.widthAnchor.constraint(equalToConstant: 100)
             

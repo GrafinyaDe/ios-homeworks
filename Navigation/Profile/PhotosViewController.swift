@@ -51,7 +51,6 @@ class PhotosViewController: UIViewController {
     
     private var backView: UIView = {
         $0.translatesAutoresizingMaskIntoConstraints = false
-        //        $0.frame = view.frame
         $0.backgroundColor = .gray
         $0.alpha = 0.0
         return $0
@@ -63,7 +62,6 @@ class PhotosViewController: UIViewController {
         $0.setImage(UIImage(systemName: "xmark"), for: .normal)
         $0.alpha = 0.0
         $0.addTarget(self, action: #selector(cancelAction), for: .touchUpInside)
-        //             $0.actions(forTarget: cancelAction, forControlEvent: .touchUpInside)
         return $0
     }(UIButton())
     
@@ -89,7 +87,6 @@ class PhotosViewController: UIViewController {
     private var imgY = NSLayoutConstraint()
     private var imgWidht = NSLayoutConstraint()
     private var imgHeight = NSLayoutConstraint()
-    
     
 }
 
@@ -141,11 +138,8 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
             image.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             image.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             image.widthAnchor.constraint(equalToConstant: view.frame.width),
-            image.heightAnchor.constraint(equalToConstant: view.frame.width)
-            
-        ])
-        
-        NSLayoutConstraint.activate([
+            image.heightAnchor.constraint(equalToConstant: view.frame.width),
+   
             button.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             button.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])

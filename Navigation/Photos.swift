@@ -36,15 +36,6 @@ struct Photos {
         photos.append(Photos(image: UIImage(named: "20")!))
         return photos
     }
-    
-//    static func makePhotoForPreview() -> [Photos] {
-//        var photos = [Photos]()
-//        photos.append(Photos(image: UIImage(named: "1")!))
-//        photos.append(Photos(image: UIImage(named: "2")!))
-//        photos.append(Photos(image: UIImage(named: "3")!))
-//        photos.append(Photos(image: UIImage(named: "4")!))
-//        return photos
-//    }
 }
 
 

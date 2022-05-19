@@ -78,9 +78,33 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
+    func shakeTextField(textField: UITextField)
+    {
+        let animation = CABasicAnimation(keyPath: "position")
+        animation.duration = 0.07
+        animation.repeatCount = 3
+        animation.autoreverses = true
+        animation.fromValue = NSValue(cgPoint: CGPoint(x: textField.center.x - 5, y: textField.center.y))
+        animation.toValue = NSValue(cgPoint: CGPoint(x: textField.center.x + 5, y: textField.center.y))
+        textField.layer.add(animation, forKey: "position")
+
+        textField.attributedPlaceholder = NSAttributedString(string: textField.placeholder ?? "",
+                                                             attributes: [NSAttributedString.Key.foregroundColor: UIColor.red])
+    }
+    
     @objc func buttonPressed() {
         
+        if statusTextField.text!.isEmpty {
+            
+            shakeTextField(textField: statusTextField)
+            statusTextField.layer.borderColor = UIColor.red.cgColor
+
+        } else {
+        
         statusLabel.text = statusText
+            statusTextField.layer.borderColor = UIColor.black.cgColor
+
+        }
     }
     
     private var statusText: String = ""
@@ -92,7 +116,6 @@ class ProfileHeaderView: UIView {
         setGesture()
         kbdClose()
     }
-    
     
     private func kbdClose() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(kbdHide))
@@ -194,30 +217,22 @@ class ProfileHeaderView: UIView {
             avatarX,
             avatarY,
             avatarWight,
-            avatarHeight
-        ])
-        
-        NSLayoutConstraint.activate([
+            avatarHeight,
+
             fullNameLabel.topAnchor.constraint(equalTo:  topAnchor, constant: 27),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 120),
             fullNameLabel.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: 0),
-            fullNameLabel.heightAnchor.constraint(equalToConstant: 30)
-        ])
-        
-        NSLayoutConstraint.activate([
+            fullNameLabel.heightAnchor.constraint(equalToConstant: 30),
+   
             statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant:  16),
             statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 120),
-            statusLabel.trailingAnchor.constraint(equalTo:  trailingAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
+            statusLabel.trailingAnchor.constraint(equalTo:  trailingAnchor),
+       
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 16),
             statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.leadingAnchor, constant: 120),
             statusTextField.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        NSLayoutConstraint.activate([
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+    
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.leadingAnchor.constraint(equalTo:  leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo:  trailingAnchor, constant: -16),

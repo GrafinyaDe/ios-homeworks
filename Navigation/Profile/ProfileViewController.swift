@@ -8,7 +8,7 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
+        
     private var post = Post.makeMockPost()
     
     private lazy var tableView: UITableView = {
@@ -27,6 +27,12 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        
     }
     
     private func layout() {
@@ -67,6 +73,8 @@ extension ProfileViewController: UITableViewDataSource {
         } else  {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.identifire, for: indexPath) as! PostTableViewCell
             cell.setupCell(post[indexPath.row])
+            cell.delegate = self
+            
             return cell
         }
     }
@@ -108,6 +116,37 @@ extension ProfileViewController: UITableViewDelegate {
         if indexPath.section == 0 {
             self.navigationController?.pushViewController(PhotosViewController(), animated: true)
         }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [self] _, _, completionHandler in
+            
+            post.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = .systemRed
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
+    }
+}
+
+// MARK: PostTableViewCellDelegate
+
+extension ProfileViewController: PostTableViewCellDelegate {
+    
+    func viewDetailVC(image: UIImageView, autor: UILabel, description: UILabel) {
+        
+        let detailVC = DetailViewController()
+        detailVC.setupVC(image: image, autor: autor, description: description)
+        navigationController?.pushViewController(detailVC, animated: true)
+        
+    }
+    
+    
 }
